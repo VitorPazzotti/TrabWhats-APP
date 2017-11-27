@@ -42,9 +42,8 @@ public class Conversa implements Serializable{
     public ArrayList<Mensagem> Buscar(String palavra) throws nenhumaMensagemException{
         ArrayList<Mensagem> resultadoBusca = new ArrayList<Mensagem>();
         resultadoBusca.removeAll(resultadoBusca);
-        palavra.toLowerCase();
         for (Mensagem mensagem : listaMensagens) {
-            if (mensagem.getTexto().toLowerCase().contains(palavra)) {
+            if (mensagem.getTexto().toLowerCase().contains(palavra.toLowerCase())) {
                 resultadoBusca.add(mensagem);
             }
         }
