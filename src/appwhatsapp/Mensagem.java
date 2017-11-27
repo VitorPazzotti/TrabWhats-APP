@@ -8,8 +8,12 @@ public class Mensagem implements Serializable{
 
     private String emissor, texto;
     private String status;
-    private String data;
-    private String hora;
+    private LocalDateTime now = LocalDateTime.now();
+    private DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd/MM");
+    private DateTimeFormatter formatterHora = DateTimeFormatter.ofPattern("HH:mm");
+    private String data = now.format(formatterData);
+    private String hora = now.format(formatterHora);
+ 
 
     /*
     0-sendo enviada
@@ -21,11 +25,9 @@ public class Mensagem implements Serializable{
         this.status = "Está sendo Enviada";
     }
 
-    public Mensagem(String emissor, String texto, String data, String hora) {
+    public Mensagem(String emissor, String texto) {
         this.emissor = emissor;
         this.texto = texto;
-        this.data = data;
-        this.hora = hora;
         this.status = "Está sendo Enviada";
     }
 

@@ -8,6 +8,10 @@ public class Conversa implements Serializable{
 
     private String contato;
     protected ArrayList<Mensagem> listaMensagens = new ArrayList<>();
+
+    public ArrayList<Mensagem> getListaMensagens() {
+        return listaMensagens;
+    }
     private String vistoPorUltimo;
 
     public String getContato() {
@@ -37,11 +41,6 @@ public class Conversa implements Serializable{
 
     public ArrayList<Mensagem> Buscar(String palavra) throws nenhumaMensagemException{
         ArrayList<Mensagem> resultadoBusca = new ArrayList<Mensagem>();
-        /*for (int i = 0; i < listaMensagens.size() ; i++) {
-            if (listaMensagens.get(i).getTexto().contains(palavra)) {
-                resultadoBusca.add(listaMensagens.get(i));
-            }
-        }*/
         resultadoBusca.removeAll(resultadoBusca);
         palavra.toLowerCase();
         for (Mensagem mensagem : listaMensagens) {
@@ -57,9 +56,6 @@ public class Conversa implements Serializable{
 
     public StringBuilder TodaConversa() {
         StringBuilder todaConversa = new StringBuilder();
-        /*for (int i = 0; i < listaMensagens.size(); i++) {
-            todaConversa.append(listaMensagens.get(i));
-        }*/
         todaConversa.delete(0, todaConversa.length());
         for (Mensagem conversa : listaMensagens) {
             todaConversa.append(conversa);

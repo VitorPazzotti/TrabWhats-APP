@@ -20,19 +20,22 @@ public class Whatsapp implements Serializable{
         this.statusUsuario = statusUsuario;
     }
 
-    public void addConversa(Conversa c) {
+    private void addConversa(Conversa c) {
         listaConversa.add(c);
     }
 
-    public void iniciarConversa(String telContato) {
-        String novoContatoNum = JOptionPane.showInputDialog(null, "Informe o telefone do contato.");
+    public void iniciarConversa(String telContato) {       
+        boolean comparar = false;
         Conversa c = new Conversa(telContato, statusUsuario);
         for (int i = 0; i < listaConversa.size(); i++) {
-            if (!novoContatoNum.equals(listaConversa.get(i).getContato())) {
-                listaConversa.add(c);
-            } else {
-                JOptionPane.showMessageDialog(null, "Esse contato já existe.");
+            if (telContato.equals(listaConversa.get(i).getContato())) {
+                comparar = true;
             }
+        }
+        if(comparar){
+            JOptionPane.showMessageDialog(null, "Este contato já existe", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }else{
+            addConversa(c);
         }
     }
 

@@ -16,48 +16,12 @@ public class AppWhatsapp implements Serializable{
 
     public static void main(String[] args) {
         // TODO code application logic here
-        /*LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM" + "-" + "HH:mm");
-        String dataEHora = now.format(formatter);
-        System.out.println(dataEHora);*/
-        JFrameWhatsapp wpp = null;
-        File f = new File("Whats.txt");
-        if(f.exists()){
-            abrir(f, wpp);
-        }else{
-            wpp  = new JFrameWhatsapp();
-        }
+        JFrameWhatsapp wpp = new JFrameWhatsapp();
         wpp.setIconImage(new ImageIcon("wpp.png").getImage());
         wpp.setLocationRelativeTo(null);
+        wpp.setResizable(false);
         wpp.setVisible(true);
 
     }
-
-    public String dataEHora() {
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM" + "-" + "HH:mm");
-        String dataEHora = now.format(formatter);
-        return (dataEHora);
-    }
     
-    public void salvar(JFrameWhatsapp wpp) {
-        String fileName = "Whats.txt";
-        try(FileOutputStream fout = new FileOutputStream(fileName);
-                ObjectOutputStream oout = new ObjectOutputStream(fout)){
-            oout.writeObject(wpp);
-            //oout.writeObject(wpp.w);
-        }catch(Exception e){}
-    }
-
-    static public void abrir(File f, JFrameWhatsapp wpp) {
-        
-        try(FileInputStream fin = new FileInputStream(f);
-                ObjectInputStream oin = new ObjectInputStream(fin)){
-            wpp = (JFrameWhatsapp) oin.readObject();
-            //wpp.w = (Whatsapp) oin.readObject();
-        }catch(Exception e){}
-        
-        
-    }
-
 }
